@@ -5,7 +5,7 @@ coauthors: with Aaron Huberman
 section: working
 wip: true
 venue: ""
-url: ""
+link: ""
 abstract: ""
 pdf: ""
 order: 3

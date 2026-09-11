@@ -93,7 +93,7 @@ content:
         label: Journal / venue
         type: string
         description: For published papers, e.g. "Journal of Financial Econometrics, 22(3), 696–742, 2024"
-      - name: url
+      - name: link
         label: Link
         type: string
         description: Publisher page or DOI link. The title links here if no PDF is uploaded

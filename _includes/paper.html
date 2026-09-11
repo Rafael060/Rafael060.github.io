@@ -1,11 +1,11 @@
 {% assign paper = include.paper %}
 {% assign pdf = paper.pdf | default: "" %}
-{% assign url = paper.url | default: "" %}
+{% assign extlink = paper.link | default: "" %}
 {% assign subtitle = paper.subtitle | default: "" %}
 {% assign coauthors = paper.coauthors | default: "" %}
 {% assign venue = paper.venue | default: "" %}
 {% assign abstract = paper.abstract | default: "" %}
-{% assign link = pdf %}{% if link == "" %}{% assign link = url %}{% endif %}
+{% assign link = pdf %}{% if link == "" %}{% assign link = extlink %}{% endif %}
 <div class="paper">
   <p class="title">{% if link != "" %}<a href="{{ link }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
   {% if subtitle != "" or coauthors != "" or paper.wip %}

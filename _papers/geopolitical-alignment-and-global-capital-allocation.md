@@ -5,7 +5,7 @@ coauthors: ""
 section: jmp
 wip: false
 venue: ""
-url: ""
+link: ""
 abstract: ""
 pdf: ""
 order: 1
