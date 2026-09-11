@@ -2,6 +2,7 @@
 ---
 {% assign p = site.data.profile %}
 {% assign cv = p.cv | default: "" %}
+{% assign photo = p.photo | default: "" %}
 {% assign github = p.github | default: "" %}
 {% assign email = p.email | default: "" %}
 {% assign bio = p.bio | default: "" %}
@@ -32,6 +33,10 @@
   h2 { font-size: 1.05rem; font-weight: bold; text-transform: uppercase; letter-spacing: .08em;
        margin: 2.5rem 0 .75rem; padding-bottom: .3rem; border-bottom: 1px solid var(--rule); }
   .affil { color: var(--muted); margin: 0 0 1rem; }
+  .header { display: flex; gap: 1.75rem; align-items: flex-start; }
+  .header .text { flex: 1 1 auto; min-width: 0; }
+  .header img { width: 150px; height: auto; max-width: 35%; border-radius: 4px; flex: 0 0 auto; }
+  @media (max-width: 480px) { .header { flex-direction: column-reverse; gap: 1rem; } .header img { width: 120px; max-width: 100%; } }
   nav a { margin-right: 1.25rem; }
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -49,15 +54,19 @@
 <body>
 <main>
 
-<h1>{{ p.name }}</h1>
-<p class="affil">{{ p.position }}<br>{{ p.affiliation }}</p>
-
-<nav>
-  {% if cv != "" %}<a href="{{ cv }}">CV</a>{% endif %}
-  <a href="#research">Research</a>
-  {% if github != "" %}<a href="{{ github }}">GitHub</a>{% endif %}
-  {% if email != "" %}<a href="mailto:{{ email }}">Email</a>{% endif %}
-</nav>
+<div class="header">
+  <div class="text">
+    <h1>{{ p.name }}</h1>
+    <p class="affil">{{ p.position }}<br>{{ p.affiliation }}</p>
+    <nav>
+      {% if cv != "" %}<a href="{{ cv }}">CV</a>{% endif %}
+      <a href="#research">Research</a>
+      {% if github != "" %}<a href="{{ github }}">GitHub</a>{% endif %}
+      {% if email != "" %}<a href="mailto:{{ email }}">Email</a>{% endif %}
+    </nav>
+  </div>
+  {% if photo != "" %}<img src="{{ photo }}" alt="{{ p.name }}">{% endif %}
+</div>
 
 {% if bio != "" %}<div class="bio">{{ bio | markdownify }}</div>{% endif %}
 

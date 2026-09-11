@@ -16,6 +16,13 @@ content:
         label: Name
         type: string
         required: true
+      - name: photo
+        label: Photo
+        type: image
+        description: Headshot, square or portrait, JPG or PNG. Leave empty to show no photo
+        options:
+          media: files
+          extensions: [jpg, jpeg, png]
       - name: position
         label: Position
         type: string
