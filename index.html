@@ -64,14 +64,20 @@
 {% assign papers = site.papers | sort: "order", "last" %}
 {% assign jmp = papers | where: "section", "jmp" %}
 {% assign working = papers | where: "section", "working" %}
+{% assign published = papers | where: "section", "published" %}
 
 {% if jmp.size > 0 %}
 <h2 id="research">Job Market Paper</h2>
 {% for paper in jmp %}{% include paper.html paper=paper %}{% endfor %}
 {% endif %}
 
+{% if published.size > 0 %}
+<h2{% if jmp.size == 0 %} id="research"{% endif %}>Publications</h2>
+{% for paper in published %}{% include paper.html paper=paper %}{% endfor %}
+{% endif %}
+
 {% if working.size > 0 %}
-<h2{% if jmp.size == 0 %} id="research"{% endif %}>Working Papers</h2>
+<h2{% if jmp.size == 0 and published.size == 0 %} id="research"{% endif %}>Working Papers</h2>
 {% for paper in working %}{% include paper.html paper=paper %}{% endfor %}
 {% endif %}
 

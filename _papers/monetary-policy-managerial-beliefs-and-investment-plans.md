@@ -4,6 +4,8 @@ subtitle: ""
 coauthors: with Tommaso Roccuzzo
 section: working
 wip: true
+venue: ""
+url: ""
 abstract: ""
 pdf: ""
 order: 4

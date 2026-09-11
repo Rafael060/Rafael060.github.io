@@ -82,11 +82,21 @@ content:
               label: Job Market Paper
             - name: working
               label: Working Papers
+            - name: published
+              label: Publications
       - name: wip
         label: Work in progress
         type: boolean
         default: false
         description: Adds a "work in progress" tag next to the title
+      - name: venue
+        label: Journal / venue
+        type: string
+        description: For published papers, e.g. "Journal of Financial Econometrics, 22(3), 696–742, 2024"
+      - name: url
+        label: Link
+        type: string
+        description: Publisher page or DOI link. The title links here if no PDF is uploaded
       - name: abstract
         label: Abstract
         type: text

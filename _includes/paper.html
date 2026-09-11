@@ -1,12 +1,16 @@
 {% assign paper = include.paper %}
 {% assign pdf = paper.pdf | default: "" %}
+{% assign url = paper.url | default: "" %}
 {% assign subtitle = paper.subtitle | default: "" %}
 {% assign coauthors = paper.coauthors | default: "" %}
+{% assign venue = paper.venue | default: "" %}
 {% assign abstract = paper.abstract | default: "" %}
+{% assign link = pdf %}{% if link == "" %}{% assign link = url %}{% endif %}
 <div class="paper">
-  <p class="title">{% if pdf != "" %}<a href="{{ pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
+  <p class="title">{% if link != "" %}<a href="{{ link }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
   {% if subtitle != "" or coauthors != "" or paper.wip %}
   <p class="meta">{{ subtitle }}{% if subtitle != "" and coauthors != "" %} &middot; {% endif %}{{ coauthors }}{% if paper.wip %} <span class="tag">&middot; work in progress</span>{% endif %}</p>
   {% endif %}
+  {% if venue != "" %}<p class="meta"><em>{{ venue }}</em></p>{% endif %}
   {% if abstract != "" %}<div class="abs">{{ abstract | markdownify }}</div>{% endif %}
 </div>
