@@ -1,6 +1,11 @@
 ---
 ---
 {% assign p = site.data.profile %}
+{% assign cv = p.cv | default: "" %}
+{% assign github = p.github | default: "" %}
+{% assign email = p.email | default: "" %}
+{% assign bio = p.bio | default: "" %}
+{% assign location = p.location | default: "" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,13 +53,13 @@
 <p class="affil">{{ p.position }}<br>{{ p.affiliation }}</p>
 
 <nav>
-  {% if p.cv != blank %}<a href="{{ p.cv }}">CV</a>{% endif %}
+  {% if cv != "" %}<a href="{{ cv }}">CV</a>{% endif %}
   <a href="#research">Research</a>
-  {% if p.github != blank %}<a href="{{ p.github }}">GitHub</a>{% endif %}
-  {% if p.email != blank %}<a href="mailto:{{ p.email }}">Email</a>{% endif %}
+  {% if github != "" %}<a href="{{ github }}">GitHub</a>{% endif %}
+  {% if email != "" %}<a href="mailto:{{ email }}">Email</a>{% endif %}
 </nav>
 
-{% if p.bio != blank %}<div class="bio">{{ p.bio | markdownify }}</div>{% endif %}
+{% if bio != "" %}<div class="bio">{{ bio | markdownify }}</div>{% endif %}
 
 {% assign papers = site.papers | sort: "order", "last" %}
 {% assign jmp = papers | where: "section", "jmp" %}
@@ -70,7 +75,7 @@
 {% for paper in working %}{% include paper.html paper=paper %}{% endfor %}
 {% endif %}
 
-{% if p.location != blank %}<footer>{{ p.location }}</footer>{% endif %}
+{% if location != "" %}<footer>{{ location }}</footer>{% endif %}
 
 </main>
 </body>

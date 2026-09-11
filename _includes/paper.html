@@ -1,8 +1,12 @@
 {% assign paper = include.paper %}
+{% assign pdf = paper.pdf | default: "" %}
+{% assign subtitle = paper.subtitle | default: "" %}
+{% assign coauthors = paper.coauthors | default: "" %}
+{% assign abstract = paper.abstract | default: "" %}
 <div class="paper">
-  <p class="title">{% if paper.pdf != blank %}<a href="{{ paper.pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
-  {% if paper.subtitle != blank or paper.coauthors != blank or paper.wip %}
-  <p class="meta">{% if paper.subtitle != blank %}{{ paper.subtitle }}{% endif %}{% if paper.coauthors != blank %}{% if paper.subtitle != blank %} &middot; {% endif %}{{ paper.coauthors }}{% endif %}{% if paper.wip %} <span class="tag">&middot; work in progress</span>{% endif %}</p>
+  <p class="title">{% if pdf != "" %}<a href="{{ pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
+  {% if subtitle != "" or coauthors != "" or paper.wip %}
+  <p class="meta">{{ subtitle }}{% if subtitle != "" and coauthors != "" %} &middot; {% endif %}{{ coauthors }}{% if paper.wip %} <span class="tag">&middot; work in progress</span>{% endif %}</p>
   {% endif %}
-  {% if paper.abstract != blank %}<div class="abs">{{ paper.abstract | markdownify }}</div>{% endif %}
+  {% if abstract != "" %}<div class="abs">{{ abstract | markdownify }}</div>{% endif %}
 </div>
