@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafael Alves</title>
+<meta name="description" content="Rafael Alves, PhD candidate in Finance at Duke University (Fuqua). Asset pricing, international finance, macro-finance.">
+<style>
+  :root {
+    --bg: #fbfaf7; --fg: #1f1f1f; --muted: #5c5c5c; --rule: #d9d6cf; --link: #1a4d8f;
+    --maxw: 44rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161616; --fg: #e8e6e1; --muted: #a9a69f; --rule: #3a3a3a; --link: #8fb6ec; }
+  }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 17px/1.55 Georgia, "Times New Roman", serif;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  main { max-width: var(--maxw); margin: 0 auto; }
+  h1 { font-size: 2rem; font-weight: normal; margin: 0 0 .25rem; letter-spacing: .01em; }
+  h2 { font-size: 1.05rem; font-weight: bold; text-transform: uppercase; letter-spacing: .08em;
+       margin: 2.5rem 0 .75rem; padding-bottom: .3rem; border-bottom: 1px solid var(--rule); }
+  .affil { color: var(--muted); margin: 0 0 1rem; }
+  nav a { margin-right: 1.25rem; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .paper { margin: 0 0 1.75rem; }
+  .paper .title { font-weight: bold; margin: 0; }
+  .paper .meta { color: var(--muted); font-size: .95rem; margin: .1rem 0 .4rem; }
+  .paper p.abs { margin: 0; }
+  .tag { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  footer { margin-top: 3rem; color: var(--muted); font-size: .9rem; }
+  @media (max-width: 480px) { body { font-size: 16px; } h1 { font-size: 1.7rem; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Rafael Alves</h1>
+<p class="affil">PhD Candidate in Finance<br>
+Fuqua School of Business, Duke University</p>
+
+<nav>
+  <!-- TODO: add cv.pdf to the repo root, then uncomment the next line -->
+  <!-- <a href="cv.pdf">CV</a> -->
+  <a href="#research">Research</a>
+  <a href="https://github.com/Rafael060">GitHub</a>
+  <!-- TODO: replace with Duke email and uncomment -->
+  <!-- <a href="mailto:first.last@duke.edu">Email</a> -->
+</nav>
+
+<p style="margin-top:1.5rem">I work on asset pricing, international finance, and macro-finance.
+My research uses structural models and text-based measurement to study how geopolitics, beliefs,
+and expectations shape asset prices and cross-border capital flows.</p>
+
+<p>Advisor: <a href="https://sites.google.com/view/ravi-bansal">Ravi Bansal</a>.</p>
+
+<h2 id="research">Job Market Paper</h2>
+
+<div class="paper">
+  <p class="title">Geopolitical Alignment and Global Capital Allocation</p>
+  <p class="meta">Reduced-form causal evidence and a structural quantification</p>
+  <p class="abs">How do geopolitical relations affect the global allocation of capital?
+  Using a dynamic measure of bilateral political alignment and a gravity framework for
+  cross-border asset holdings, I show that aligned country pairs hold substantially more of
+  each other's assets: a one-standard-deviation increase in alignment raises bilateral holdings
+  by about a third, and instrumental-variable estimates imply a larger causal effect.
+  Embedding geopolitical distance as a friction in a multi-country model of capital allocation,
+  I find that it is a first-order barrier, comparable in output cost to capital-tax wedges and
+  larger than linguistic distance. A hypothetical split of the world into US- and China-led blocs
+  is inexpensive on average but highly uneven across countries: the losses concentrate on
+  capital-scarce economies that are financed across the bloc divide.</p>
+</div>
+
+<h2>Working Papers</h2>
+
+<div class="paper">
+  <p class="title">What News Move Stock Prices? Evidence from a Century of Subjective Expectations</p>
+  <p class="meta">with Aaron Huberman</p>
+  <p class="abs">Survey-based measures of subjective cash-flow expectations exist only for the last
+  four decades, which limits what can be said about the historical drivers of stock prices.
+  We recover analyst-style subjective earnings expectations from the historical financial-news
+  record, calibrated to modern survey data, and extend the subjective Campbell-Shiller
+  decomposition of price ratios back through the twentieth century. This lets us ask which news,
+  about cash flows or about discount rates, moved prices across the Great Depression, the postwar
+  period, and the Great Inflation, and how the answer compares with the modern survey era.</p>
+</div>
+
+<div class="paper">
+  <p class="title">Volatility Expectations and the Pricing Kernel</p>
+  <p class="meta">with Aaron Huberman <span class="tag">&middot; work in progress</span></p>
+  <p class="abs">We document that the curvature of the conditional pricing kernel estimated from
+  S&amp;P 500 index options falls by roughly half after 2008, and we link this break to a shift
+  in investors' volatility and tail beliefs measured from survey data. We develop an
+  Epstein-Zin economy with variance-biased, persistent beliefs to account for the pre- and
+  post-2008 shapes of the kernel.</p>
+</div>
+
+<footer>
+  Duke University &middot; Durham, NC
+</footer>
+
+</main>
+</body>
+</html>
