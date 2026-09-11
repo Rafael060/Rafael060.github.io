@@ -3,6 +3,6 @@ title: What News Move Stock Prices? Evidence from a Century of Subjective Expect
 coauthors: with Aaron Huberman
 section: working
 wip: false
-abstract: "[Draft Incoming]"
+abstract: "[Draft Coming Soon]"
 order: 2
 ---
