@@ -1,0 +1,8 @@
+{% assign paper = include.paper %}
+<div class="paper">
+  <p class="title">{% if paper.pdf != blank %}<a href="{{ paper.pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</p>
+  {% if paper.subtitle != blank or paper.coauthors != blank or paper.wip %}
+  <p class="meta">{% if paper.subtitle != blank %}{{ paper.subtitle }}{% endif %}{% if paper.coauthors != blank %}{% if paper.subtitle != blank %} &middot; {% endif %}{{ paper.coauthors }}{% endif %}{% if paper.wip %} <span class="tag">&middot; work in progress</span>{% endif %}</p>
+  {% endif %}
+  {% if paper.abstract != blank %}<div class="abs">{{ paper.abstract | markdownify }}</div>{% endif %}
+</div>

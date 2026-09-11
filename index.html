@@ -1,10 +1,13 @@
+---
+---
+{% assign p = site.data.profile %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rafael Alves</title>
-<meta name="description" content="Rafael Alves, PhD candidate in Finance at Duke University (Fuqua). Asset pricing, international finance, macro-finance.">
+<title>{{ p.name }}</title>
+<meta name="description" content="{{ p.name }}, {{ p.position }}, {{ p.affiliation }}.">
 <style>
   :root {
     --bg: #fbfaf7; --fg: #1f1f1f; --muted: #5c5c5c; --rule: #d9d6cf; --link: #1a4d8f;
@@ -27,10 +30,12 @@
   nav a { margin-right: 1.25rem; }
   a { color: var(--link); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  .bio { margin-top: 1.5rem; }
   .paper { margin: 0 0 1.75rem; }
   .paper .title { font-weight: bold; margin: 0; }
   .paper .meta { color: var(--muted); font-size: .95rem; margin: .1rem 0 .4rem; }
-  .paper p.abs { margin: 0; }
+  .paper .abs p { margin: 0 0 .5rem; }
+  .paper .abs p:last-child { margin-bottom: 0; }
   .tag { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
   footer { margin-top: 3rem; color: var(--muted); font-size: .9rem; }
   @media (max-width: 480px) { body { font-size: 16px; } h1 { font-size: 1.7rem; } }
@@ -39,62 +44,33 @@
 <body>
 <main>
 
-<h1>Rafael Alves</h1>
-<p class="affil">PhD Candidate in Finance<br>
-Fuqua School of Business, Duke University</p>
+<h1>{{ p.name }}</h1>
+<p class="affil">{{ p.position }}<br>{{ p.affiliation }}</p>
 
 <nav>
-  <!-- TODO: add cv.pdf to the repo root, then uncomment the next line -->
-  <!-- <a href="cv.pdf">CV</a> -->
+  {% if p.cv != blank %}<a href="{{ p.cv }}">CV</a>{% endif %}
   <a href="#research">Research</a>
-  <a href="https://github.com/Rafael060">GitHub</a>
-  <!-- TODO: replace with Duke email and uncomment -->
-  <!-- <a href="mailto:first.last@duke.edu">Email</a> -->
+  {% if p.github != blank %}<a href="{{ p.github }}">GitHub</a>{% endif %}
+  {% if p.email != blank %}<a href="mailto:{{ p.email }}">Email</a>{% endif %}
 </nav>
 
-<p style="margin-top:1.5rem">I work on asset pricing, international finance, and macro-finance.
-My research uses structural models and text-based measurement to study how geopolitics, beliefs,
-and expectations shape asset prices and cross-border capital flows.</p>
+{% if p.bio != blank %}<div class="bio">{{ p.bio | markdownify }}</div>{% endif %}
 
+{% assign papers = site.papers | sort: "order", "last" %}
+{% assign jmp = papers | where: "section", "jmp" %}
+{% assign working = papers | where: "section", "working" %}
+
+{% if jmp.size > 0 %}
 <h2 id="research">Job Market Paper</h2>
+{% for paper in jmp %}{% include paper.html paper=paper %}{% endfor %}
+{% endif %}
 
-<div class="paper">
-  <p class="title">Geopolitical Alignment and Global Capital Allocation</p>
-  <p class="meta">Reduced-form causal evidence and a structural quantification</p>
-</div>
+{% if working.size > 0 %}
+<h2{% if jmp.size == 0 %} id="research"{% endif %}>Working Papers</h2>
+{% for paper in working %}{% include paper.html paper=paper %}{% endfor %}
+{% endif %}
 
-<h2>Working Papers</h2>
-
-<div class="paper">
-  <p class="title">What News Move Stock Prices? Evidence from a Century of Subjective Expectations</p>
-  <p class="meta">with Aaron Huberman</p>
-  <p class="abs">Survey-based measures of subjective cash-flow expectations exist only for the last
-  four decades, which limits what can be said about the historical drivers of stock prices.
-  We recover analyst-style subjective earnings expectations from the historical financial-news
-  record, calibrated to modern survey data, and extend the subjective Campbell-Shiller
-  decomposition of price ratios back through the twentieth century. This lets us ask which news,
-  about cash flows or about discount rates, moved prices across the Great Depression, the postwar
-  period, and the Great Inflation, and how the answer compares with the modern survey era.</p>
-</div>
-
-<div class="paper">
-  <p class="title">Volatility Expectations and the Pricing Kernel</p>
-  <p class="meta">with Aaron Huberman <span class="tag">&middot; work in progress</span></p>
-  <p class="abs">We document that the curvature of the conditional pricing kernel estimated from
-  S&amp;P 500 index options falls by roughly half after 2008, and we link this break to a shift
-  in investors' volatility and tail beliefs measured from survey data. We develop an
-  Epstein-Zin economy with variance-biased, persistent beliefs to account for the pre- and
-  post-2008 shapes of the kernel.</p>
-</div>
-
-<div class="paper">
-  <p class="title">Monetary Policy, Managerial Beliefs and Investment Plans</p>
-  <p class="meta">with Tommaso Roccuzzo <span class="tag">&middot; work in progress</span></p>
-</div>
-
-<footer>
-  Duke University &middot; Durham, NC
-</footer>
+{% if p.location != blank %}<footer>{{ p.location }}</footer>{% endif %}
 
 </main>
 </body>

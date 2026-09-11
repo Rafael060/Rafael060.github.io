@@ -1,0 +1,104 @@
+media:
+  - name: files
+    label: Files
+    input: files
+    output: /files
+    extensions: [pdf, png, jpg, jpeg]
+
+content:
+  - name: profile
+    label: About me
+    type: file
+    path: _data/profile.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: position
+        label: Position
+        type: string
+        description: For example, PhD Candidate in Finance
+      - name: affiliation
+        label: Affiliation
+        type: string
+      - name: bio
+        label: Short bio
+        type: text
+        description: One or two sentences shown under your name
+      - name: email
+        label: Email
+        type: string
+        description: Leave empty to hide the Email link
+      - name: cv
+        label: CV (PDF)
+        type: file
+        description: Upload your CV. Leave empty to hide the CV link
+        options:
+          media: files
+          extensions: [pdf]
+      - name: github
+        label: GitHub URL
+        type: string
+        description: Leave empty to hide the GitHub link
+      - name: location
+        label: Footer line
+        type: string
+
+  - name: papers
+    label: Papers
+    type: collection
+    path: _papers
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, section, wip, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+        description: Optional line under the title
+      - name: coauthors
+        label: Coauthors
+        type: string
+        description: For example, "with Aaron Huberman". Leave empty if solo
+      - name: section
+        label: Section
+        type: select
+        default: working
+        options:
+          values:
+            - name: jmp
+              label: Job Market Paper
+            - name: working
+              label: Working Papers
+      - name: wip
+        label: Work in progress
+        type: boolean
+        default: false
+        description: Adds a "work in progress" tag next to the title
+      - name: abstract
+        label: Abstract
+        type: text
+        description: Leave empty to show the title only
+      - name: pdf
+        label: Paper PDF
+        type: file
+        description: Upload the draft. The title becomes a link to it
+        options:
+          media: files
+          extensions: [pdf]
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers appear first

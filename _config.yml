@@ -1,0 +1,7 @@
+title: Rafael Alves
+collections:
+  papers:
+    output: false
+exclude:
+  - README.md
+  - .pages.yml
