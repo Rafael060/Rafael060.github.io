@@ -60,7 +60,7 @@ content:
     format: yaml-frontmatter
     filename: "{primary}.md"
     view:
-      fields: [title, section, wip, order]
+      fields: [title, section, order]
       primary: title
       sort: [order, title]
       default:
@@ -91,11 +91,8 @@ content:
               label: Working Papers
             - name: published
               label: Publications
-      - name: wip
-        label: Work in progress
-        type: boolean
-        default: false
-        description: Adds a "work in progress" tag next to the title
+            - name: wip
+              label: Work in Progress
       - name: venue
         label: Journal / venue
         type: string

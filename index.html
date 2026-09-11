@@ -74,6 +74,7 @@
 {% assign jmp = papers | where: "section", "jmp" %}
 {% assign working = papers | where: "section", "working" %}
 {% assign published = papers | where: "section", "published" %}
+{% assign wip = papers | where: "section", "wip" %}
 
 {% if jmp.size > 0 %}
 <h2 id="research">Job Market Paper</h2>
@@ -88,6 +89,11 @@
 {% if working.size > 0 %}
 <h2{% if jmp.size == 0 and published.size == 0 %} id="research"{% endif %}>Working Papers</h2>
 {% for paper in working %}{% include paper.html paper=paper %}{% endfor %}
+{% endif %}
+
+{% if wip.size > 0 %}
+<h2{% if jmp.size == 0 and published.size == 0 and working.size == 0 %} id="research"{% endif %}>Work in Progress</h2>
+{% for paper in wip %}{% include paper.html paper=paper %}{% endfor %}
 {% endif %}
 
 {% if location != "" %}<footer>{{ location }}</footer>{% endif %}
